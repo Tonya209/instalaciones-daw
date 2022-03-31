@@ -12,7 +12,7 @@ Para comprobar, he creado un fichero `info.php` en la ruta `/var/www/html`
 
 Y vemos la información de PHP: PHP7.4.3.
 
-### 2. Segiendo el video tutorial he instalado Wordpress
+### 2. Siguiendo el video tutorial he instalado Wordpress
 ### 3. Instalamos Drupal:
 
 - Descargamos Drupal de la página web: 
@@ -48,3 +48,18 @@ He usado el comando para resolverlo:
 - los últimos pasos: configurar sitio (dar nombre - **Web Ubuntu**/ poner correo electrónico) y terminar traducciones.
 
 
+
+
+#### Últimos pasos:  
+1. Actualmente estoy usando el port 1234, que he indicado en el Vargant file. Voy a cambiarlo a puerto 80:
+ >`Vagrant.configure("2") do |config|`\
+ >`config.vm.box = "bento/ubuntu-20.04"`\
+ >`config.vm.network "forwarded_port", guest: 80, host: 80`\
+ >`end`
+
+2. También tengo que hacer cambios en el fichero hosts de Windows (C:/windows/system32/drivers/etc/hosts ):
+ añado:
+ >`127.0.0.1		www.miservidor.drupal.com`\
+	>`127.0.0.1		miservidor.drupal.com`
+
+Ahora Drupal se abre cuando ponemos drupal.miservidor.com en el navegador.
